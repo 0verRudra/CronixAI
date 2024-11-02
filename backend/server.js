@@ -14,7 +14,7 @@ connectDB();
 
 // Enable CORS for the frontend
 app.use(cors({
-    origin: 'http://localhost:5001',
+    origin: 'https://ai.cronix.cloud',
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true, // Add this
