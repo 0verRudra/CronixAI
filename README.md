@@ -22,7 +22,7 @@ CronixAI is an AI-powered chat application similar to ChatGPT. It uses the Gemin
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/username/CronixAI.git
+   git clone https://github.com/0verRudra/CronixAI.git
    cd CronixAI
    ```
 
