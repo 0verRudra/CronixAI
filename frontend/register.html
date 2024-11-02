@@ -100,13 +100,12 @@
             try {
                 // Send POST request to backend
                 const response = await fetch('http://localhost:5001/api/auth/register', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ username: name, email, password }), // Send the correct data format
-                });
-    
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    credentials: 'include', // Add this to send cookies
+    body: JSON.stringify({ username: name, email, password }),
+});
+
                 const data = await response.json();
                 
                 if (response.ok) {
