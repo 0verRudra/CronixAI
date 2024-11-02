@@ -6,7 +6,6 @@
     <title>Register - Cronix AI</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Ensure video covers the background */
         .video-background {
             position: fixed;
             top: 0;
@@ -45,9 +44,9 @@
 
                 <div class="space-y-6">
                     <div>
-                        <label class="text-gray-800 text-sm mb-2 block">Name</label>
+                        <label class="text-gray-800 text-sm mb-2 block">Username</label>
                         <div class="relative flex items-center">
-                            <input name="name" type="text" required class="text-gray-800 bg-white border border-gray-300 w-full text-sm px-4 py-2.5 rounded-md outline-blue-500" placeholder="Enter name" />
+                            <input name="username" type="text" required class="text-gray-800 bg-white border border-gray-300 w-full text-sm px-4 py-2.5 rounded-md outline-blue-500" placeholder="Enter username" />
                         </div>
                     </div>
 
@@ -89,7 +88,7 @@
             e.preventDefault();
             
             // Get input values
-            const name = document.querySelector('input[name="name"]').value;
+            const username = document.querySelector('input[name="username"]').value; // Updated to username
             const email = document.querySelector('input[name="email"]').value;
             const password = document.querySelector('input[name="password"]').value;
 
@@ -102,14 +101,13 @@
                 const response = await fetch('https://ai.cronix.cloud/api/auth/register', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    credentials: 'include', // Add this to send cookies
-                    body: JSON.stringify({ username: name, email, password }),
+                    credentials: 'include',
+                    body: JSON.stringify({ username, email, password }), // Ensure all fields are included
                 });
 
                 const data = await response.json();
                 
                 if (response.ok) {
-                    // Registration successful
                     messageDiv.textContent = 'User registered successfully. Redirecting to login...';
                     messageDiv.classList.add('text-green-500');
                     
@@ -118,7 +116,6 @@
                         window.location.href = '/login';
                     }, 1000);
                 } else {
-                    // Registration failed, display the error message
                     messageDiv.textContent = `Error: ${data.error}`;
                     messageDiv.classList.add('text-red-500');
                 }
