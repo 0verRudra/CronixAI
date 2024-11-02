@@ -14,10 +14,12 @@ connectDB();
 
 // Enable CORS for the frontend
 app.use(cors({
-    origin: 'http://localhost:5001', // Ensure this is correct based on your frontend
+    origin: 'http://localhost:5001',
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true, // Add this
 }));
+
 
 app.use(express.json());
 app.use(cookieParser()); // Use cookie-parser before your routes
